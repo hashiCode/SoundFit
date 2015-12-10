@@ -1,12 +1,88 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context=".MainActivity$PlaceholderFragment">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:paddingTop="@dimen/activity_horizontal_margin"
+              tools:context=".MainActivity$PlaceholderFragment"
+              android:orientation="vertical">
 
-    <TextView android:id="@+id/section_label" android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <RelativeLayout
+        android:gravity="center"
+        style="@style/SoundTypeItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-</RelativeLayout>
+        <ImageView
+            android:id="@+id/headphone_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:src="@drawable/ic_headset_black_24dp"/>
+
+
+        <TextView
+            style="@style/SoundTypeLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/headphone"
+            android:id="@+id/headphone_label"
+            android:layout_alignParentLeft="true"/>
+
+        <Switch
+            android:id="@+id/headphone_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:checked="@bool/defaultSwitch"/>
+
+        <SeekBar
+            android:id="@+id/headphone_seekbar"
+            style="@style/SoundTypeSeekbar"
+            android:layout_below="@id/headphone_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:progress="@integer/defaultVolume"/>
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        style="@style/SoundTypeItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/bluetooth_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:src="@drawable/ic_bluetooth_connected_black_24dp"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/bluetooth"
+            style="@style/SoundTypeLabel"
+            android:id="@+id/bluetooth_label"
+            android:layout_alignParentLeft="true"/>
+
+        <Switch
+            android:id="@+id/bluetooth_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:checked="@bool/defaultSwitch"/>
+
+        <SeekBar
+            android:id="@+id/bluetooth_seekbar"
+            style="@style/SoundTypeSeekbar"
+            android:layout_below="@id/bluetooth_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:progress="@integer/defaultVolume"/>
+
+
+    </RelativeLayout>
+
+</LinearLayout>

@@ -13,5 +13,21 @@
     </style>
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    
+    <style name="SoundTypeItem">
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingRight">16dp</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingBottom">8dp</item>
+    </style>
+
+    <style name="SoundTypeLabel">
+        <item name="android:paddingLeft">56dp</item>
+    </style>
+
+    <style name="SoundTypeSeekbar">
+        <item name="android:layout_marginTop">36dp</item>
+        <item name="android:layout_marginBottom">36dp</item>
+    </style>
 
 </resources>
