@@ -32,16 +32,14 @@
             android:id="@+id/headphone_switch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:checked="@bool/defaultSwitch"/>
+            android:layout_alignParentRight="true"/>
 
         <SeekBar
             android:id="@+id/headphone_seekbar"
             style="@style/SoundTypeSeekbar"
             android:layout_below="@id/headphone_label"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:progress="@integer/defaultVolume"/>
+            android:layout_height="wrap_content"/>
 
 
     </RelativeLayout>
@@ -71,16 +69,14 @@
             android:id="@+id/bluetooth_switch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:checked="@bool/defaultSwitch"/>
+            android:layout_alignParentRight="true"/>
 
         <SeekBar
             android:id="@+id/bluetooth_seekbar"
             style="@style/SoundTypeSeekbar"
             android:layout_below="@id/bluetooth_label"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:progress="@integer/defaultVolume"/>
+            android:layout_height="wrap_content"/>
 
 
     </RelativeLayout>

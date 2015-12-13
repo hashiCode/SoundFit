@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import com.hashicode.soundfit.R;
 import com.hashicode.soundfit.fragmentpageadapter.SectionsPagerAdapter;
 import com.hashicode.soundfit.model.SoundFit;
+import com.hashicode.soundfit.persistence.SoundFitService;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
      */
     private ViewPager mViewPager;
 
+    private SoundFitService soundFitService;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupViewPager() {
-        mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager(), this);
+        mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager(), SoundFitService.getInstance(this).selectAllSoundFit());
 
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
@@ -50,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
         for(int i=0; i<SoundFit.TYPES.length;i++){
-            tabLayout.getTabAt(i).setIcon(SoundFit.TYPE_ICON.get(SoundFit.TYPES[i]));
+            tabLayout.getTabAt(i).setIcon(SectionsPagerAdapter.TYPE_ICON.get(SoundFit.TYPES[i]));
         }
     }
 

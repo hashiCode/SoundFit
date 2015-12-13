@@ -4,8 +4,14 @@ import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import com.hashicode.soundfit.R;
 import com.hashicode.soundfit.fragment.SoundFitFragment;
 import com.hashicode.soundfit.model.SoundFit;
+
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
@@ -13,16 +19,26 @@ import com.hashicode.soundfit.model.SoundFit;
  */
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
-    private Context context;
+    public static final Map<Integer, Integer> TYPE_ICON;
 
-    public SectionsPagerAdapter(FragmentManager fm, Context context) {
+    static{
+        Map<Integer, Integer> map = new HashMap<>();
+        map.put(SoundFit.WALKING,R.drawable.ic_directions_walk_white_24dp);
+        map.put(SoundFit.RUNNING,R.drawable.ic_directions_run_white_24dp);
+        map.put(SoundFit.BIKING,R.drawable.ic_directions_bike_white_24dp);
+        TYPE_ICON = Collections.unmodifiableMap(map);
+    }
+
+    private List<SoundFit> sounds;
+
+    public SectionsPagerAdapter(FragmentManager fm, List<SoundFit> listSoundFit) {
         super(fm);
-        this.context = context;
+        this.sounds = listSoundFit;
     }
 
     @Override
     public Fragment getItem(int position) {
-        return new SoundFitFragment();
+        return SoundFitFragment.createFragment(sounds.get(position));
     }
 
     @Override
@@ -30,9 +46,9 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
         return SoundFit.TYPES.length;
     }
 
-    @Override
-    public CharSequence getPageTitle(int position) {
-        return this.context.getResources().getString(SoundFit.TYPES[position]);
-    }
+//    @Override
+//    public CharSequence getPageTitle(int position) {
+//        return this.context.getResources().getString(TYPES[position]);
+//    }
 
 }
