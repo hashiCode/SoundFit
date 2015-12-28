@@ -8,6 +8,8 @@ import com.hashicode.soundfit.model.SoundFit;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.hashicode.soundfit.persistence.SoundFitTable.*;
+
 /**
  * Created by takahashi on 12/15/15.
  */
@@ -53,6 +55,22 @@ public class SoundFitService {
         contentValues.put(SoundFitTable.COLUMN_HEADPHONE_ENABLED, soundFit.getHeadphoneEnable() ? 1 : 0);
         contentValues.put(SoundFitTable.COLUMN_HEADPHONE_VOLUME, soundFit.getHeadphoneVolume());
         return this.soundFitDatabaseHelper.getWritableDatabase().update(SoundFitTable.TABLE_NAME,contentValues, SoundFitTable.COLUMN_ID + "= ?",new String[]{soundFit.getId().toString()});
+    }
+
+    public SoundFit selectByType(String type){
+        SoundFit soundFit=null;
+        Cursor query = this.soundFitDatabaseHelper.getReadableDatabase().query(SoundFitTable.TABLE_NAME, null, SoundFitTable.COLUMN_TYPE + " =?", new String[]{type}, null, null,null);
+        if(query.getCount()==1) {
+            soundFit = new SoundFit();
+            query.moveToFirst();
+            soundFit.setId(query.getInt(COLUMN_ID_IDX));
+            soundFit.setBluetoothEnabled(query.getInt(COLUMN_BLUETOOTH_ENABLED_IDX) == 1);
+            soundFit.setBluetoothVolume(query.getInt(COLUMN_BLUETOOTH_VOLUME_IDX));
+            soundFit.setHeadphoneEnable(query.getInt(COLUMN_HEADPHONE_ENABLED_IDX) == 1);
+            soundFit.setHeadphoneVolume(query.getInt(COLUMN_HEADPHONE_VOLUME_IDX));
+            query.close();
+        }
+        return soundFit;
     }
 
 
