@@ -2,26 +2,15 @@ package com.hashicode.soundfit.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.provider.BaseColumns;
-import com.hashicode.soundfit.R;
-
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
+import com.hashicode.soundfit.Constants;
 
 /**
  * Created by takahashi on 12/8/15.
  */
 public class SoundFit implements Parcelable {
 
-    public static final int WALKING = 0;
-    public static final int RUNNING = 1;
-    public static final int BIKING = 2;
-
-    public static final int[] TYPES = new int[]{WALKING, RUNNING, BIKING};
-
     private Integer id;
-    private Integer type;
+    private String type;
     private Boolean headphoneEnable;
     private Integer headphoneVolume;
     private Boolean bluetoothEnabled;
@@ -35,11 +24,11 @@ public class SoundFit implements Parcelable {
         this.id = id;
     }
 
-    public Integer getType() {
+    public String getType() {
         return type;
     }
 
-    public void setType(Integer type) {
+    public void setType(String type) {
         this.type = type;
     }
 
@@ -96,7 +85,7 @@ public class SoundFit implements Parcelable {
 
     protected SoundFit(Parcel in) {
         this.id = (Integer) in.readValue(Integer.class.getClassLoader());
-        this.type = (Integer) in.readValue(Integer.class.getClassLoader());
+        this.type = (String) in.readValue(String.class.getClassLoader());
         this.headphoneEnable = (Boolean) in.readValue(Boolean.class.getClassLoader());
         this.headphoneVolume = (Integer) in.readValue(Integer.class.getClassLoader());
         this.bluetoothEnabled = (Boolean) in.readValue(Boolean.class.getClassLoader());

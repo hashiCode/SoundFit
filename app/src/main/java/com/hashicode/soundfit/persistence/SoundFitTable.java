@@ -24,12 +24,12 @@ public interface SoundFitTable {
     int COLUMN_BLUETOOTH_VOLUME_IDX = 5;
 
     String CREATE_TABLE = "CREATE TABLE "+TABLE_NAME+" ("+COLUMN_ID+" integer primary key, "
-            + COLUMN_TYPE+ " integer not null, "
+            + COLUMN_TYPE+ " text not null, "
             + COLUMN_HEADPHONE_ENABLED+" integer not null, "
             + COLUMN_HEADPHONE_VOLUME+" integer not null, "
             + COLUMN_BLUETOOTH_ENABLED+" integer not null, "
             + COLUMN_BLUETOOTH_VOLUME+ " integer not null)";
 
     String INSERT_TEMPLATE = "insert into "+TABLE_NAME+ "("+COLUMN_TYPE+", "+COLUMN_HEADPHONE_ENABLED
-            +", "+COLUMN_HEADPHONE_VOLUME+", "+COLUMN_BLUETOOTH_ENABLED+", "+COLUMN_BLUETOOTH_VOLUME+") values (%d, 1, 35, 0, 20)";
+            +", "+COLUMN_HEADPHONE_VOLUME+", "+COLUMN_BLUETOOTH_ENABLED+", "+COLUMN_BLUETOOTH_VOLUME+") values ('%s', 1, 35, 0, 20)";
 }

@@ -12,9 +12,9 @@ import android.view.MenuItem;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.ActivityRecognition;
+import com.hashicode.soundfit.Constants;
 import com.hashicode.soundfit.R;
 import com.hashicode.soundfit.fragmentpageadapter.SectionsPagerAdapter;
-import com.hashicode.soundfit.model.SoundFit;
 import com.hashicode.soundfit.persistence.SoundFitService;
 
 public class MainActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
@@ -70,8 +70,8 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
-        for(int i=0; i<SoundFit.TYPES.length;i++){
-            tabLayout.getTabAt(i).setIcon(SectionsPagerAdapter.TYPE_ICON.get(SoundFit.TYPES[i]));
+        for(int i = 0; i< Constants.TYPES.length; i++){
+            tabLayout.getTabAt(i).setIcon(Constants.TYPE_ICON.get(Constants.TYPES[i]));
         }
     }
 

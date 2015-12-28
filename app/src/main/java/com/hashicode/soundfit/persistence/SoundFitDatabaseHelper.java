@@ -3,7 +3,7 @@ package com.hashicode.soundfit.persistence;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import com.hashicode.soundfit.model.SoundFit;
+import com.hashicode.soundfit.Constants;
 
 /**
  * Created by takahashi on 12/10/15.
@@ -29,9 +29,9 @@ public class SoundFitDatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL(SoundFitTable.CREATE_TABLE);
-        sqLiteDatabase.execSQL(String.format(SoundFitTable.INSERT_TEMPLATE, SoundFit.WALKING));
-        sqLiteDatabase.execSQL(String.format(SoundFitTable.INSERT_TEMPLATE, SoundFit.RUNNING));
-        sqLiteDatabase.execSQL(String.format(SoundFitTable.INSERT_TEMPLATE, SoundFit.BIKING));
+        sqLiteDatabase.execSQL(String.format(SoundFitTable.INSERT_TEMPLATE, Constants.WALKING));
+        sqLiteDatabase.execSQL(String.format(SoundFitTable.INSERT_TEMPLATE, Constants.RUNNING));
+        sqLiteDatabase.execSQL(String.format(SoundFitTable.INSERT_TEMPLATE, Constants.BIKING));
 
     }
 

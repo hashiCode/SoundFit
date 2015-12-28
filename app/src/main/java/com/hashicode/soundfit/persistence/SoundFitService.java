@@ -35,7 +35,7 @@ public class SoundFitService {
             cursor.moveToPosition(i);
             SoundFit soundFit = new SoundFit();
             soundFit.setId(cursor.getInt(SoundFitTable.COLUMN_ID_IDX));
-            soundFit.setType(cursor.getInt(SoundFitTable.COLUMN_TYPE_IDX));
+            soundFit.setType(cursor.getString(SoundFitTable.COLUMN_TYPE_IDX));
             soundFit.setHeadphoneEnable(cursor.getInt(SoundFitTable.COLUMN_HEADPHONE_ENABLED_IDX)==1);
             soundFit.setHeadphoneVolume(cursor.getInt(SoundFitTable.COLUMN_HEADPHONE_VOLUME_IDX));
             soundFit.setBluetoothEnabled(cursor.getInt(SoundFitTable.COLUMN_BLUETOOTH_ENABLED_IDX)==1);
