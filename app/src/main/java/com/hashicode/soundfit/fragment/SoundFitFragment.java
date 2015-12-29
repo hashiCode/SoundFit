@@ -1,5 +1,7 @@
 package com.hashicode.soundfit.fragment;
 
+import android.content.Context;
+import android.media.AudioManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -57,11 +59,17 @@ public class SoundFitFragment extends Fragment {
     }
 
     private void initializeView(View rootView) {
+        AudioManager audioManager =(AudioManager) getActivity().getSystemService(Context.AUDIO_SERVICE);
+        int streamMaxVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
+
+
         Switch headphoneSwitch = (Switch) rootView.findViewById(R.id.headphone_switch);
         Switch bluetoothSwitch = (Switch) rootView.findViewById(R.id.bluetooth_switch);
 
         SeekBar headphoneSeekBar = (SeekBar) rootView.findViewById(R.id.headphone_seekbar);
         SeekBar bluetoothSeekBar = (SeekBar) rootView.findViewById(R.id.bluetooth_seekbar);
+        headphoneSeekBar.setMax(streamMaxVolume);
+        bluetoothSeekBar.setMax(streamMaxVolume);
 
         VolumeSeekBarListener volumeSeekBarListener = new VolumeSeekBarListener(this.soundFit);
         headphoneSeekBar.setOnSeekBarChangeListener(volumeSeekBarListener);
