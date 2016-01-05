@@ -3,6 +3,7 @@ package com.hashicode.soundfit.persistence;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.media.AudioManager;
 import com.hashicode.soundfit.Constants;
 
 /**
@@ -15,8 +16,11 @@ public class SoundFitDatabaseHelper extends SQLiteOpenHelper {
 
     private static SoundFitDatabaseHelper SOUNDFITDATABASEHELPER;
 
+    private Context context;
+
     private SoundFitDatabaseHelper(Context context){
         super(context, DB_NAME, null, DB_VERSION);
+        this.context = context;
     }
 
     public static SoundFitDatabaseHelper getInstance(Context context){
@@ -28,10 +32,13 @@ public class SoundFitDatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
+        AudioManager audioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
+        int currentVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
         sqLiteDatabase.execSQL(SoundFitTable.CREATE_TABLE);
-        sqLiteDatabase.execSQL(String.format(SoundFitTable.INSERT_TEMPLATE, Constants.WALKING));
-        sqLiteDatabase.execSQL(String.format(SoundFitTable.INSERT_TEMPLATE, Constants.RUNNING));
-        sqLiteDatabase.execSQL(String.format(SoundFitTable.INSERT_TEMPLATE, Constants.BIKING));
+        sqLiteDatabase.execSQL(String.format(SoundFitTable.INSERT_TEMPLATE, Constants.WALKING,currentVolume,currentVolume));
+        sqLiteDatabase.execSQL(String.format(SoundFitTable.INSERT_TEMPLATE, Constants.RUNNING,currentVolume, currentVolume));
+        sqLiteDatabase.execSQL(String.format(SoundFitTable.INSERT_TEMPLATE, Constants.BIKING, currentVolume, currentVolume));
+        sqLiteDatabase.execSQL(String.format(SoundFitTable.INSERT_TEMPLATE, Constants.STILL, currentVolume, currentVolume));
 
     }
 

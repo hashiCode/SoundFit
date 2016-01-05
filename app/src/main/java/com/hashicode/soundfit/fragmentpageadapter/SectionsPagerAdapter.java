@@ -34,9 +34,4 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
         return Constants.TYPES.length;
     }
 
-//    @Override
-//    public CharSequence getPageTitle(int position) {
-//        return this.context.getResources().getString(TYPES[position]);
-//    }
-
 }

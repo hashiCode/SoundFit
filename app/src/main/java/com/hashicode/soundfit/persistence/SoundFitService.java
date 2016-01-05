@@ -64,6 +64,7 @@ public class SoundFitService {
             soundFit = new SoundFit();
             query.moveToFirst();
             soundFit.setId(query.getInt(COLUMN_ID_IDX));
+            soundFit.setType(query.getString(COLUMN_TYPE_IDX));
             soundFit.setBluetoothEnabled(query.getInt(COLUMN_BLUETOOTH_ENABLED_IDX) == 1);
             soundFit.setBluetoothVolume(query.getInt(COLUMN_BLUETOOTH_VOLUME_IDX));
             soundFit.setHeadphoneEnable(query.getInt(COLUMN_HEADPHONE_ENABLED_IDX) == 1);

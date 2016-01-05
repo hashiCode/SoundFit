@@ -31,5 +31,7 @@ public interface SoundFitTable {
             + COLUMN_BLUETOOTH_VOLUME+ " integer not null)";
 
     String INSERT_TEMPLATE = "insert into "+TABLE_NAME+ "("+COLUMN_TYPE+", "+COLUMN_HEADPHONE_ENABLED
-            +", "+COLUMN_HEADPHONE_VOLUME+", "+COLUMN_BLUETOOTH_ENABLED+", "+COLUMN_BLUETOOTH_VOLUME+") values ('%s', 1, 35, 0, 20)";
+            +", "+COLUMN_HEADPHONE_VOLUME+", "+COLUMN_BLUETOOTH_ENABLED+", "+COLUMN_BLUETOOTH_VOLUME+") values ('%s" +
+            "" +
+            "', 1, %d, 0, %d)";
 }
